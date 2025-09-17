@@ -19,3 +19,12 @@ vim.api.nvim_set_keymap("i", "\\{", "<", { noremap = true }) -- maps \{ to <
 vim.api.nvim_set_keymap("i", "\\{{", "<<", { noremap = true }) -- maps \{ to <
 vim.api.nvim_set_keymap("i", "\\}", ">", { noremap = true }) -- maps \}} to >
 vim.api.nvim_set_keymap("i", "\\}}", ">>", { noremap = true }) -- maps \{{ to >>
+
+
+vim.keymap.set("n", "qq", function() -- maps 'qq' for previous diagnostic
+  vim.diagnostic.goto_prev({ severity = nil })  -- severity = nil == errors & warnings
+end, { desc = "Previous diagnostic" })
+
+vim.keymap.set("n", "ee", function() -- maps 'ee' for next diagnostic
+  vim.diagnostic.goto_next({ severity = nil })
+end, { desc = "Next diagnostic" })
